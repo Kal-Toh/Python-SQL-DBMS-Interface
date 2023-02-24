@@ -166,8 +166,7 @@ def add_web_table(con, cur, db_name):
             con.commit()
             print(f"{table_name} created.")
             #! USE interpolation
-            #! Add count of records added
-
+            #! Add count of records added lol
 
 def scrape_web_data(url):
     page = requests.get(url)
