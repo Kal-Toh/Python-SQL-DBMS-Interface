@@ -1,6 +1,10 @@
 from add_data import select_table
 import os
+
+
+## This function provides options for deleting records, tables or database ##
 def delete_menu(con, cur, db_name):
+    ## Prompting user to choose an option ##
     selection = int(input("""
     What would you like to delete?
     1. Record
@@ -8,6 +12,7 @@ def delete_menu(con, cur, db_name):
     3. Database
     4. Back
     """))
+    ## Checking user selection ##
     if selection == 1:
         delete_record(con, cur, db_name)
     elif selection == 2:
@@ -21,6 +26,7 @@ def delete_menu(con, cur, db_name):
     Unrecognised selection.""")
 
 
+## This function deletes a record from the selected table ##
 def delete_record(con, cur, db_name):
     table_name = select_table(con, cur, db_name, cont="delete")
     print(f"You have selected {table_name}")
@@ -36,8 +42,6 @@ def delete_record(con, cur, db_name):
         print(f"{record_sel[0]} deleted from {table_name}.")
     else:
         print("Deletion Canceled.")
-    
-    #del menu
 
 def select_record(con, cur, db_name, table_name):
     cur.execute(f"SELECT * FROM {table_name}")
@@ -75,8 +79,6 @@ def table_rec_count(con, cur, db_name):
     if tables == []:
         return ("000")
     else:
-        # table_list = "\n    ".join([f"{i+1}. {f}" for i, f in enumerate(tables)])
-        # return table_list
         table_rec_count = []
         for table in tables:
             cur.execute(f"SELECT COUNT(*) FROM {table[0]};")
@@ -103,9 +105,3 @@ def delete_database(con, cur, db_name):
         con.close()
         from main import start
         start()
-
-        
-    #show contents
-    #confirm by typing database name
-    #delete
-    #del menu

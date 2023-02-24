@@ -49,5 +49,3 @@ def update_record(con, cur, db_name, table_name, row_sel, rows):
             add_more = True
         else:
             add_more = False
-
-# UPDATE desert SET food = "foofoo", calories = "2020", chocolate = "no" WHERE food=Cake
