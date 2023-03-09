@@ -1,4 +1,5 @@
 import time
+from tabulate import tabulate
 
 #! PRINT HEADINGS WHEN VIEWING
 
@@ -37,7 +38,19 @@ def view_table(con, cur, db_name, table_selection, tables, table_list):
     else:
         print(f"No data found in table '{table_name_clean}'.")
 
-
+def view_table(con, cur, db_name, table_selection, tables, table_list):
+    table_name = tables[table_selection]
+    table_name_str = str(table_name)
+    table_name_clean = table_name_str[2:-3]
+    cur.execute(f"SELECT * FROM {table_name_clean}")
+    rows = cur.fetchall()
+    if rows:
+        cur.execute(f"Select * FROM {table_name_clean} LIMIT 0")
+        headers = [desc[0] for desc in cur.description]
+        print(f"\nData in table '{table_name_clean}':\n")
+        print(tabulate(rows, headers=headers, tablefmt='fancy_grid', maxcolwidths=23))
+    else:
+        print(f"No data found in table '{table_name_clean}'.")
     
 
 
