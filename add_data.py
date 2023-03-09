@@ -147,7 +147,8 @@ def add_web_table(con, cur, db_name):
             column_names_clean.append(cleaned)
         new_table = []
         for column in column_names_clean:
-            data_type = input(f"Enter data type for {column}:\n")
+            data_type = "text"
+            data_type = input(f"Enter data type for {column} (leave blank for text):\n")
             constraint = input(f"Enter constraint for {column} or leave blank\n")
             new_table.append(f"{column} {data_type} {constraint}")
         sql_code = f"CREATE TABLE {table_name} ({', '.join(new_table)})"
