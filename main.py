@@ -108,6 +108,10 @@ def db_operations():
     elif selection =="4":
         time.sleep(0.02)
         delete_menu(con, cur, db_name)
+    elif selection =="5":
+        print("Exiting PyDBMSI")
+        time.sleep(0.02)
+        quit()
     else:
         print("Unrecognised selection.")
 
