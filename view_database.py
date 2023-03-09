@@ -1,8 +1,6 @@
 import time
 from tabulate import tabulate
 
-#! PRINT HEADINGS WHEN VIEWING
-
 def read(con, cur, db_name, cont=True):
     cur.execute("SELECT name FROM sqlite_master WHERE type='table';")
     tables = cur.fetchall()

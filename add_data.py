@@ -157,18 +157,19 @@ def add_web_table(con, cur, db_name):
 
         add_data = input("Would you like to add scraped data to this table? y/n\n")
         if add_data == "y":
+            added_row_count = 0
             for row in scraped_data[0].itertuples(index=False):
                 values_dirty = [str(value).replace("'", " ") for value in row]
                 values = ", ".join(f"'{str(value)}'" for value in values_dirty)
                 sql_code = f"INSERT INTO {table_name} VALUES ({values});"
                 cur.execute(sql_code)
                 con.commit()
-                print(f"Scraped data inserted into {table_name}")
+                added_row_count += 1
+                print(f"{added_row_count} rows data inserted into {table_name}\r", end="")
         elif add_data == "n":
             con.commit()
             print(f"{table_name} created.")
             #! USE interpolation
-            #! Add count of records added lol
 
 def scrape_web_data(url):
     page = requests.get(url)

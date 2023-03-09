@@ -10,7 +10,6 @@ from delete_data import *
 
 #TODO - Make sure menu text inline
 #!    - Implement interpolation on add_data_web
-#!    - Add count of records added on add_data_web
 #TODO - Add ability for multi pages on add_data_web
 #TODO - Make sure sleep timing is used throughout modules 
 #TODO - Add options to return to previous menu
