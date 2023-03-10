@@ -28,6 +28,17 @@ db_name = None
 ## This function presents the user with the option to select an existing database or create a new one ##
 def start():
     print(f"""
+    *///////////////          
+      /////////////////       
+      PyDBMSI 1.0  /////      
+                    /////     
+            ////////////      
+              ////////        
+                //////        
+                  //////      
+                    //////    
+                      //////  
+                        /  
     Welcome to PyDBMSI.
     """)
     ## Get list of existing databases in current directory ##
@@ -45,9 +56,9 @@ def start():
             time.sleep(0.2)
             ## Present list of databases and let user select one ##
             db_selection = int(input(f"""
-            Select a database:
-            {db_list}
-            """)) - 1
+    Select a database:
+    {db_list}
+    """)) - 1
             db_name = db_files[db_selection]
             ## Connect to selected database and return connection object and name ##
             con = sql.connect(db_name)

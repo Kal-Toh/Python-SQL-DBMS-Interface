@@ -10,15 +10,15 @@ def add_data_mu(con, cur, db_name):
     tables = cur.fetchall()
     if tables == []:
         emp_tbl = input("""
-        No tables found, would you like to add one? y/n:\n
+    No tables found, would you like to add one? y/n:\n
         """)
         if emp_tbl == "y":
             add_tbl_(con, cur, db_name)
     else:
         add_type = input("""
-        What would you like to add?
-        1. Table
-        2. Data
+    What would you like to add?
+    1. Table
+    2. Data
         """)
         if add_type == "1":
             add_tbl_(con, cur, db_name)
@@ -27,12 +27,11 @@ def add_data_mu(con, cur, db_name):
 
 def add_tbl_(con, cur, db_name):
     print("""
-        How would you like to table?
+    How would you like to table?
             """)
     selection = input("""
-        1. Manually
-        2. From Web
-        3. From CSV file
+    1. Manually
+    2. From Web
             """)
     if selection == "1":
         add_manual_table(con, cur, db_name)
@@ -54,7 +53,7 @@ def add_manual_table(con, cur, db_name):
         new_tables.append(f"{column_name} {data_type} {constraint}")
 
         add_more = input("""
-        Would you like to add another column? y/n: \n
+    Would you like to add another column? y/n: \n
         """)
     sql_code = f"CREATE TABLE {table_name} ({', '.join(new_tables)})"
 
@@ -90,12 +89,11 @@ def select_table(con, cur, db_name, cont="add"):
 
 def add_data(con, cur, db_name, table_name_clean):
     print(f"""
-        How would you like to data to {table_name_clean}?
+    How would you like to data to {table_name_clean}?
             """)
     selection = input("""
-        1. Manually
-        2. From Web
-        3. From CSV file
+    1. Manually
+    2. From Web
             """)
     if selection == "1":
         add_manual_data(con, cur, db_name, table_name_clean)
